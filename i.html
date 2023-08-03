@@ -5,29 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>toast notification or snack bar</title>
     <link rel="stylesheet" href="s.css">
-    <script src="https://kit.fontawesome.com/2c99a38b7a.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/2c99a38b7a.js" crossorigin="anonymous"></script> -->
+    <!-- added font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     
-
+    <!-- create buttons with onclick function -->
     <div class="buttons">
         <button onclick="showToast(successMsg)">Success</button>
         <button onclick="showToast(errorMsg)">Error</button>
         <button onclick="showToast(invalidMsg)">Invalid</button>
     </div>
 
+    <!-- create toastBox for notifications -->
     <div id="toastBox"></div>
 
 
     <script>
-
+        // target toastBox div element using id
         let toastBox = document.getElementById("toastBox");
 
+        // create messages for toastBox population
         let successMsg = '<i class="fa-solid fa-circle-check"></i> Successfully submitted';
         let errorMsg = '<i class="fa-solid fa-circle-xmark"></i> please fix error';
         let invalidMsg = ' <i class="fa-solid fa-circle-exclamation"></i> invalid input, check again';
 
-        // create element div, add class to div, add msg to div, add as child to html element.
+        // create div element, add class to div, add msg to div, add as child to html element.
         function showToast(msg){
             // create div, display message
             let toast = document.createElement('div');
@@ -37,6 +41,20 @@
             toast.innerHTML = msg;
             // append to DOM
             toastBox.appendChild(toast);
+
+            // if message includes error string
+            if(msg.includes('error')){
+                toast.classList.add("error");
+            }
+            // if msg includes invalid string
+            if(msg.includes('invalid')){
+                toast.classList.add("invalid");
+            }
+
+            setTimeout(()=> {
+                toast.remove();
+            }, 5200)
+
 
         }
     </script>
