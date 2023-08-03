@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toast notification or snack bar</title>
+    <link rel="stylesheet" href="s.css">
+    <script src="https://kit.fontawesome.com/2c99a38b7a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+
+    <div class="buttons">
+        <button onclick="showToast(successMsg)">Success</button>
+        <button onclick="showToast(errorMsg)">Error</button>
+        <button onclick="showToast(invalidMsg)">Invalid</button>
+    </div>
+
+    <div id="toastBox"></div>
+
+
+    <script>
+
+        let toastBox = document.getElementById("toastBox");
+
+        let successMsg = '<i class="fa-solid fa-circle-check"></i> Successfully submitted';
+        let errorMsg = '<i class="fa-solid fa-circle-xmark"></i> please fix error';
+        let invalidMsg = ' <i class="fa-solid fa-circle-exclamation"></i> invalid input, check again';
+
+        // create element div, add class to div, add msg to div, add as child to html element.
+        function showToast(msg){
+            // create div, display message
+            let toast = document.createElement('div');
+            // add class name
+            toast.classList.add("toast");
+            // add msg
+            toast.innerHTML = msg;
+            // append to DOM
+            toastBox.appendChild(toast);
+
+        }
+    </script>
+</body>
+</html>
